@@ -1,6 +1,17 @@
 # Generar cadena (población) inicial
-def  initial_data(root, iterations):
-    pass
+def iterate_n(iterations, initial_string):
+    print("Initial string: " + initial_string)
+    
+    
+    for i in range (iterations):
+        cool_string = prepare_string(initial_string)
+        print("Iteración " + str(iterations))
+        print("cool string: " + cool_string)
+        new_cool_string = evol_process(cool_string)
+        print("New cool string: " + new_cool_string + "\n")
+        iterations -= 1
+        cool_string = new_cool_string
+        
 
 # Función que modifica ligeramente la cadena inicial para
 # facilitar el manejo de la misma en pasos posteriores
@@ -31,7 +42,8 @@ def evol_process(new_string):
 
 
 
-my_string = "1111111" # 7 unos
-cool_string = prepare_string(my_string)
-print("cool string: " + cool_string)
-print(evol_process(cool_string))
+my_string = "1" # 7 unos
+# cool_string = prepare_string(my_string)
+# print("cool string: " + cool_string)
+# print(evol_process(cool_string))
+iterate_n(4, my_string)
