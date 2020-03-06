@@ -1,7 +1,19 @@
+# Inteligenia Artificial
+# Alumnos:
+#   Fuentes Mora Oscar Fernando
+#   Granados Gómez Nanci Noelia
+#   Guerrero López Enrique
+#   Pólito Seba Víctor Hugo
+
+# Programa que controla la interacción con el usuario con las funcionalidades
+# principales, las cuales están separadas en dos programas:
+# dec_to_fp.py y fp_to_dec.py
+
 from dec_to_fp import to_fp_format
 from fp_to_dec import to_decimal
 
 
+# Función que despliega el menú interactivo al usuario
 def print_menu():
     while True:
         print("""\nElige una opción:\n
