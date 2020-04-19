@@ -6,7 +6,7 @@ class vertex:
     def add_adjacent_vertex(self, vertex):
         if vertex not in self.adjacent_vertices:
             self.adjacent_vertices.append(vertex)
-            # self.adjacent_vertices.sort()
+            self.adjacent_vertices.sort()
 
 
 class graph:
