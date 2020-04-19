@@ -4,7 +4,7 @@ class vertex:
         self.adjacent_vertices = []
         self.distance = 9999
         self.color = 'white'
-        self.predecesor = -1
+        self.predecessor = -1
 
     def add_adjacent_vertex(self, vertex):
         if vertex not in self.adjacent_vertices:
@@ -41,7 +41,7 @@ class graph:
     def bfs(self, a_vertex):
         a_vertex.distance = 0
         a_vertex.color = 'gray'
-        a_vertex.predecesor = -1
+        a_vertex.predecessor = -1
         q = []
         q.append(a_vertex.name)
         self.exploration_order.append(a_vertex.name)
@@ -55,7 +55,7 @@ class graph:
                     node_v.color = 'gray'
                     self.exploration_order.append(node_v.name)
                     node_v.distance = node_u.distance + 1
-                    node_v.predecesor = node_u.name
+                    node_v.predecessor = node_u.name
                     q.append(v)
             self.vertices[u].color = 'black'
 
@@ -79,5 +79,5 @@ if __name__ == "__main__":
         my_graph.add_edge(edge[:1],edge[1:])
     
     my_graph.print_graph()
-    # my_graph.bfs(my_vtx)
-    # my_graph.print_graph_bfs()
+    my_graph.bfs(my_vtx)
+    my_graph.print_graph_bfs()
