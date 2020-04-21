@@ -28,41 +28,41 @@ class graph:
             for key, value in self.vertices.items():
                 if key == a_vertex:
                     value.add_adjacent_vertex(another_vertex)
-                if key == another_vertex:
-                    value.add_adjacent_vertex(a_vertex)
             return True
         else:
             return False
 
     def print_graph(self):
-        for key in sorted(list(self.vertices.keys())):
+        for key in list(self.vertices.keys()):
             print("Vertice " + key + " - adyacentes: " + str(self.vertices[key].adjacent_vertices))
-    
+        print("\n")
+        
     def bfs(self, a_vertex):
         a_vertex.distance = 0
         a_vertex.color = 'gray'
         a_vertex.predecessor = -1
         q = []
         q.append(a_vertex.name)
-        self.exploration_order.append(a_vertex.name)
 
         while len(q) > 0:
-            u = q.pop()
-            node_u = self.vertices[u]
-            for v in node_u.adjacent_vertices:
-                node_v = self.vertices[v]
-                if node_v.color == 'white':
-                    node_v.color = 'gray'
-                    self.exploration_order.append(node_v.name)
-                    node_v.distance = node_u.distance + 1
-                    node_v.predecessor = node_u.name
+            u = q.pop(0)
+            self.exploration_order.append(u)
+            current_vrtx = self.vertices[u]
+            
+            for v in current_vrtx.adjacent_vertices:
+                adj_vrtx = self.vertices[v]
+                
+                if adj_vrtx.color == 'white':
+                    adj_vrtx.color = 'gray'
+                    adj_vrtx.distance = current_vrtx.distance + 1
+                    adj_vrtx.predecessor = current_vrtx.name
                     q.append(v)
             self.vertices[u].color = 'black'
 
     def print_graph_bfs(self):
         for key in sorted(list(self.vertices.keys())):
             print("La distancia de A a " + key + " es: " + str(self.vertices[key].distance))
-        print("\nDescubimiento de los nodos: ", self.exploration_order)
+        print("\nDescubimiento de los nodos: ", self.exploration_order, "\n")
 
 
 if __name__ == "__main__":
@@ -70,10 +70,13 @@ if __name__ == "__main__":
     my_vtx = vertex('A')
     my_graph.add_vertex(my_vtx)
 
-    for i in range(ord('A'), ord('I')):
+    for i in range(ord('A'), ord('V')):
         my_graph.add_vertex(vertex(chr(i)))
     
-    edges = ['AB', 'AC', 'BD', 'BE','CF','CG','CH']
+    # edges = ['AB', 'AC', 'BD', 'BE','CF','CG','CH']
+    edges = ['AB', 'AC', 'AD', 'BE','BF','CG','CH','DI','DJ',
+            'EK','EL','FL','FM','GN','HO','HP','IP','IQ','JR',
+            'KS','LT','PU']
 
     for edge in edges:
         my_graph.add_edge(edge[:1],edge[1:])
